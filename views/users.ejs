@@ -8,8 +8,8 @@
   </head>
   <body>
     <ul>
-      <% Object.keys(users).forEach(function(user, i) { %>
-        <li><%= user[1] %> (<%= user[0] %>)</li>
+      <% Object.keys(users).forEach(function(key, i) { %>
+        <li><%= users[key][0] %> (<%= users[key][1] %>)</li>
       <% }); %>
     </ul>
   </body>

@@ -6,7 +6,11 @@ const uri = 'https://api.github.com/graphql';
 const app = express();
 const apolloFetch = apollo.createApolloFetch({ uri });
 
+const query = require('./query/participantsOfIssues');
+
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 9090);
+app.listen(app.get('port'));
 
 apolloFetch.use(({ options }, next) => {
   if (!options.headers) {
@@ -25,35 +29,7 @@ const getParticipantsByIssues = (cursor = "") => {
   }
 
   return apolloFetch({
-    query: `
-      query ParticipantsOfIssues {
-        repository(owner: "frontendbr", name: "forum") {
-            id
-            name
-            issues(${issuesParams}) {
-              edges{
-                cursor
-              }
-              nodes{
-                id
-                number
-                title
-                participants(first:100) {
-                  totalCount
-                  edges{
-                    node{
-                      login
-                    }
-                  }
-                }
-                author {
-                  login
-                }
-              }
-            }
-          }
-        }
-      `,
+    query: query(issuesParams),
   });
 };
 
@@ -101,9 +77,6 @@ const startCounting = (cursor, callback) => {
     return startCounting(repository.issues.edges[edgesLength - 1].cursor, callback);
   }).catch(error => console.error(error));
 };
-
-app.set('port', process.env.PORT || 9090);
-app.listen(app.get('port'));
 
 app.get('/', (req, res) => {
   console.log('starting...');
