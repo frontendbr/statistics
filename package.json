@@ -1,0 +1,21 @@
+{
+  "name": "graphql-frontendbr-statics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "apollo-fetch": "^0.6.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.1"
+  }
+}
