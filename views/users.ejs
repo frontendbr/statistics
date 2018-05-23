@@ -7,10 +7,10 @@
     <title>Users</title>
   </head>
   <body>
-    <ul>
+    <ol>
       <% Object.keys(users).forEach(function(key, i) { %>
-        <li><%= users[key][0] %> (<%= users[key][1] %>)</li>
+        <li><a href="https://www.github.com/<%= users[key][0] %>" target="_blank" rel="noopener"><%= users[key][0] %></a> (<%= users[key][1] %>)</li>
       <% }); %>
-    </ul>
+    </ol>
   </body>
 </html>
