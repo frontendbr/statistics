@@ -80,7 +80,7 @@ const startCounting = (cursor, callback) => {
 
 app.get('/', (req, res) => {
   console.log('starting...');
-  startCounting('Y3Vyc29yOnYyOpHOB8VGjg==', function (users) {
+  startCounting('', function (users) {
     var sortedUsers = [];
 
     Object.keys(users).forEach(function(key, i) {
@@ -89,7 +89,7 @@ app.get('/', (req, res) => {
     });
 
     sortedUsers.sort(function (a, b) {
-      return a[1] - b[1];
+      return b[1] - a[1];
     })
 
     console.log(sortedUsers);
