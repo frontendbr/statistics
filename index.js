@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const apollo = require('apollo-fetch');
@@ -18,7 +19,7 @@ apolloFetch.use(({ options }, next) => {
   if (!options.headers) {
     options.headers = {}; // Create the headers object if needed.
   }
-  options.headers.Authorization = 'bearer abf6ca45931d7c36ead3269f8297b9151dd94613';
+  options.headers.Authorization = `bearer ${process.env.GITHUB_AUTH_TOKEN}`;
 
   next();
 });
