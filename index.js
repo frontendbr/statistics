@@ -9,8 +9,10 @@ const apolloFetch = apollo.createApolloFetch({ uri });
 const query = require('./query/participantsOfIssues');
 
 app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 9090);
-app.listen(app.get('port'));
+app.set('port', process.env.PORT || 9000);
+app.listen(app.get('port'), () => {
+  console.log('Server running at http://localhost:9000');
+});
 
 apolloFetch.use(({ options }, next) => {
   if (!options.headers) {
